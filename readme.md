@@ -12,3 +12,15 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+## To run
+
+```
+./main.sh
+```
+
+## Tests
+
+```
+./test.sh
+```
