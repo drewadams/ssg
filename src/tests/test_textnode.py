@@ -37,7 +37,3 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(image_node.to_html_node().to_html(), '<img src="test url" alt="This is an image node">')
         self.assertEqual(link_node.to_html_node().to_html(), '<a href="https://www.google.com">this is a link node</a>')
         self.assertEqual(raw_node.to_html_node().to_html(), "This is a raw node")
-
-
-if __name__ == "__main__":
-    unittest.main()
