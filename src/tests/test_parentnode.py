@@ -28,5 +28,4 @@ class TestParentNode(unittest.TestCase):
         child_nested2 = LeafNode("p", "child_nested2", {"class": "test-class", "id": "test-id-2"})
         child_parent = ParentNode("div", "child2", [child_nested, child_nested2], {"class": "test-class", "id": "test-id"})
         node = ParentNode("div", "test value", [child1, child_parent], {"class": "test-class", "id": "test-id"})
-        # print(repr(node))
-        self.assertEqual(repr(node), "ParentNode(div, test value, [LeafNode(p, child1, {'class': 'test-class', 'id': 'test-id'}), ParentNode(div, child2, [LeafNode(p, child_nested, {'class': 'test-class', 'id': 'test-id'}), LeafNode(p, child_nested2, {'class': 'test-class', 'id': 'test-id-2'})], {'class': 'test-class', 'id': 'test-id'})], {'class': 'test-class', 'id': 'test-id'})")
+        self.assertEqual(repr(node), "ParentNode(div, test value, [LeafNode('p', 'child1', {'class': 'test-class', 'id': 'test-id'}), ParentNode(div, child2, [LeafNode('p', 'child_nested', {'class': 'test-class', 'id': 'test-id'}), LeafNode('p', 'child_nested2', {'class': 'test-class', 'id': 'test-id-2'})], {'class': 'test-class', 'id': 'test-id'})], {'class': 'test-class', 'id': 'test-id'})")
