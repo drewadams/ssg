@@ -1,6 +1,7 @@
 import unittest
 
 from src.htmlnode import HTMLNode
+from src.leafnode import LeafNode
 from src.parentnode import ParentNode
 from src.mdconverter import MDConverter
 from src.textnode import TextNode
@@ -50,7 +51,9 @@ class TestTextNode(unittest.TestCase):
         converter = MDConverter()
         text = "This is a **bold** text\nThis is an *italic* text\nThis is a `code` text\nThis is a [link](https://www.google.com/link) text\nThis is an ![image](https://www.google.com/image) text\nThis is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
         nodes = converter.text_to_textnodes(text)
-        self.assertEqual(nodes, [TextNode('This is a ', 'text_type_text', None), TextNode('bold', 'text_type_bold', None), TextNode(' text', 'text_type_text', None), TextNode('This is an ', 'text_type_text', None), TextNode('italic', 'text_type_italic', None), TextNode(' text', 'text_type_text', None), TextNode('This is a ', 'text_type_text', None), TextNode('code', 'text_type_code', None), TextNode(' text', 'text_type_text', None), TextNode('This is a ', 'text_type_text', None), TextNode('link', 'text_type_link', 'https://www.google.com/link'), TextNode(' text', 'text_type_text', None), TextNode('This is an ', 'text_type_text', None), TextNode('image', 'text_type_image', 'https://www.google.com/image'), TextNode(' text', 'text_type_text', None), TextNode('This is ', 'text_type_text', None), TextNode('text', 'text_type_bold', None), TextNode(' with an ', 'text_type_text', None), TextNode('italic', 'text_type_italic', None), TextNode(' word and a ', 'text_type_text', None), TextNode('code block', 'text_type_code', None), TextNode(' and an ', 'text_type_text', None), TextNode('obi wan image', 'text_type_image', 'https://i.imgur.com/fJRm4Vk.jpeg'), TextNode(' and a ', 'text_type_text', None), TextNode('link', 'text_type_link', 'https://boot.dev')])
+        print(nodes)
+        
+        self.assertEqual(nodes, [LeafNode('None', 'This is a ', None), LeafNode('b', 'bold', None), LeafNode('None', ' text', None), LeafNode('None', 'This is an ', None), LeafNode('i', 'italic', None), LeafNode('None', ' text', None), LeafNode('None', 'This is a ', None), LeafNode('code', 'code', None), LeafNode('None', ' text', None), LeafNode('None', 'This is a ', None), LeafNode('a', 'link', {'href': 'https://www.google.com/link'}), LeafNode('None', ' text', None), LeafNode('None', 'This is an ', None), LeafNode('img', '', {'src': 'https://www.google.com/image', 'alt': 'image'}), LeafNode('None', ' text', None), LeafNode('None', 'This is ', None), LeafNode('b', 'text', None), LeafNode('None', ' with an ', None), LeafNode('i', 'italic', None), LeafNode('None', ' word and a ', None), LeafNode('code', 'code block', None), LeafNode('None', ' and an ', None), LeafNode('img', '', {'src': 'https://i.imgur.com/fJRm4Vk.jpeg', 'alt': 'obi wan image'}), LeafNode('None', ' and a ', None), LeafNode('a', 'link', {'href': 'https://boot.dev'})])
 
     def test_md_to_blocks(self):
         converter = MDConverter()

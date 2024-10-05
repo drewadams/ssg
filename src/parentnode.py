@@ -13,6 +13,16 @@ class ParentNode(HTMLNode):
         if (self.tag is None):
             raise ValueError("ParentNode must have a tag")
         if (self.children is None):
+            # print(self.tag, self.value, self.props)
             raise ValueError("ParentNode must have children")
         # Loop through children and call to_html on each one
-        return f"<{self.tag}{self.props_to_html()}>{''.join([child.to_html() for child in self.children])}</{self.tag}>"
+        try:
+            return f"<{self.tag}{self.props_to_html()}>{''.join([child.to_html() for child in self.children])}</{self.tag}>"
+        except Exception as e:
+            # print(e)
+            # print(self.tag, self.value, self.props)
+            # print(self.children)
+            for child in self.children:
+                if isinstance(child, List):
+                    print(child)
+            raise e

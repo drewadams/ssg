@@ -17,5 +17,5 @@ class HTMLNode():
         raise NotImplementedError
     def props_to_html(self) -> str:
         # return "".join(list(map(lambda items: f' {items[0]}="{items[1]}"', self.props.items())))
-        return "".join([f' {key}="{value}"' for key, value in self.props.items()])
+        return "".join([f' {key}="{value}"' for key, value in self.props.items()]) if self.props else ""
     
